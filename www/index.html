@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter">
+
+
+    <ion-nav-bar animation="nav-title-slide-ios7" 
+                 type="bar-positive" 
+                 back-button-type="button-icon" 
+                 back-button-icon="ion-arrow-left-c"></ion-nav-bar>
+    <ion-nav-view animation="slide-left-right"></ion-nav-view>
+      
+      <script id="signin.html" type="text/ng-template">
+	  
+      <ion-view title="<span class='appTitle'>MobiBank</span>" left-buttons="leftButtons" right-buttons="rightButtons">
+	  
+	    <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+		  <ion-nav-buttons></ion-nav-buttons>
+	      <ion-nav-back-button></ion-nav-back-button>
+        </ion-nav-bar>
+		
+		  <ion-tabs class="tabs-icon-top tabs-bottom tabs-positive">
+
+        <ion-tab title="Home" icon="ion-home">
+          <ion-nav-view >
+		  <ion-content class="padding">
+			<div style="width: 300px; height: 10px;" class="spacer"></div>
+            <div style="line-height: 20px; background-color: rgb(255, 255, 255); text-align: center; vertical-align: center;">
+                <img style="vertical-align: center;" src="img/apps_logo.png"/>
+            </div>
+            
+          <div class="list">            
+            <div class="item item-input-inset" style="border: none;">            
+                <label class="item-input-wrapper input-textfield-custom">
+                    <i class="icon ion-person placeholder-icon positive icon-person-custom"></i>
+                    <input type="text" placeholder="User ID" ng-model="user.uname">
+                </label>
+            </div>
+            <div class="item item-input-inset" style="border: none;">
+                <label class="item-input-wrapper input-textfield-custom">
+                    <i class="icon ion-locked placeholder-icon positive"></i>
+                    <input type="password" placeholder="Password" ng-model="user.pass">
+                </label>            
+            </div>
+          
+			<div>
+			 <button class="button button-block button-positive " style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:20px;" ng-click="login(user)">
+                        <i class="icon-left ion-log-in icon-btn-custom"></i>&nbsp;Sign in
+                    </button>        
+			</div>
+            
+          </div>
+		  </ion-content>
+		  </ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Locations" icon="ion-location" >
+			 <ion-tabs class="tabs-icon-top tabs-top tabs-positive" animation="slide-left-right">
+						
+				<ion-tab title="Branch Locations" icon="ion-home">
+				<ion-nav-view >
+				  <ion-content class="padding">
+				  <p>Branch Location</p>
+				   </ion-content>
+				</ion-nav-view>
+			 </ion-tab>
+			 <ion-tab title="ATM Locations" icon="ion-navigate">
+				<ion-nav-view >
+				  <ion-content class="padding">
+				  <p>ATM Location</p>
+				   </ion-content>
+				</ion-nav-view>
+			 </ion-tab>
+		  </ion-tabs>
+          
+        </ion-tab>
+
+       
+
+      </ion-tabs>
+		
+	
+      </ion-view>
+	
+    </script>
+	
+	
+	
+	
+    <script id="welcome.html" type="text/ng-template">
+      <ion-side-menus enable-menu-with-back-views="false">
+
+        <ion-side-menu-content>		
+          <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+              <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+              </button>
+            </ion-nav-buttons>
+          </ion-nav-bar>	
+		 
+          <ion-nav-view name="menuContent">
+		  
+		  </ion-nav-view>
+		 
+        </ion-side-menu-content> 
+		
+
+
+        <ion-side-menu side="left">
+          <ion-header-bar class="bar-assertive">
+            <h1 class="title">Left Menu</h1>
+          </ion-header-bar>
+          <ion-content>
+            <ul class="list">
+            
+				<a href="#/welcome/home" class="item" menu-close nav-clear>Home</a>
+              <a href="#/welcome/home2" class="item" menu-close>Home 222</a>			  
+              <a class="item" menu-close ng-click="logout()">Logout</a>
+            </ul>
+          </ion-content>
+        </ion-side-menu>
+
+	
+
+      </ion-side-menus>
+    </script>
+	
+	
+	 <script id="templates/event-menu.html" type="text/ng-template">
+      <ion-side-menus enable-menu-with-back-views="false">
+
+        <ion-side-menu-content>
+          <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+              <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+              </button>
+            </ion-nav-buttons>
+          </ion-nav-bar>
+
+          <ion-nav-view name="menuContent"></ion-nav-view>
+        </ion-side-menu-content> 
+	<!--
+        <ion-side-menu side="left">
+          <ion-header-bar class="bar-assertive">
+            <h1 class="title">Left Menu</h1>
+          </ion-header-bar>
+          <ion-content>
+            <ul class="list">
+         
+              <a href="#/event/check-in" class="item" menu-close>Check-in</a>
+              <a href="#/event/attendees" class="item" menu-close>Attendees</a>
+            </ul>
+          </ion-content>
+        </ion-side-menu>
+		-->
+		
+		   <ion-side-menu side="left">
+                <header class="bar bar-header bar-dark">
+                  <h1 class="title">Menü</h1>
+                </header>
+                <ion-content class="has-header mymenu">
+                  <ion-list class="list">
+                    <ion-item item-type="item-icon-left" nav-clear menu-close href="#/app/search">
+                      <i class="icon ion-search"></i>Search
+                    </ion-item>
+                    <ion-item item-type="item-icon-left" nav-clear menu-close href="#/app/map">
+                      <i class="icon ion-earth"></i>
+                      <span>Map</span>
+                    </ion-item>
+                    <ion-item item-type="item-icon-left" nav-clear menu-close href="#/app/help">
+                      <i class="icon ion-information-circled"></i>Help
+                    </ion-item>
+                    <ion-item item-type="item-icon-left" nav-clear menu-close href="#/app/logout">
+                      <i class="icon ion-log-out"></i>Logout
+                    </ion-item>
+
+                    <a class="item item-icon-left" href="#/app/search"><i class="icon ion-search"></i>Search</a>
+                    <a class="item item-icon-left" href="#/app/map"><i class="icon ion-earth"></i>Map</a>
+                    <a class="item item-icon-left" href="#/app/help"><i class="icon ion-information-circled"></i>Help</a>
+                    <a class="item item-icon-left" href="#/app/logout"><i class="icon ion-log-out"></i>Logout</a>
+                  </ion-list>
+                </ion-content>
+              </ion-side-menu>
+
+      </ion-side-menus>
+    </script>
+	
+	   <script id="home.html" type="text/ng-template">
+      <ion-view view-title="Home 1">
+        <ion-content class="padding">
+          <p>Home 111111111111111111111</p>
+          <p>(On desktop click and drag from left to right)</p>
+		  
+		  <div>
+			 <button class="button button-block button-positive " style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:20px;" ng-click="doclick()">
+                        <i class="icon-left ion-log-in icon-btn-custom"></i>&nbsp;DO Click 1
+                    </button>        
+			</div>
+        </ion-content>
+      </ion-view>
+    </script>
+	
+	   <script id="home2.html" type="text/ng-template">
+      <ion-view view-title="Home  2">
+        <ion-content class="padding">
+           <div class="list">  
+   
+		
+		<a href="#/accBalance" class="button button-block button-positive " style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">A/c Balance</a>
+		<a href="#/accStatement" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">A/c Statement</a>
+		<a href="#/fundTranster" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Fund Transfer</a>
+		<a href="#/fundTransterRequest" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Standing Ins.</a>
+		<a href="#/talkTimeRecharge" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Talk Time Recharge</a>
+		<a href="#/stopChequeLeaf" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Stop Cheque Leaf</a>
+		<a href="#/chequeStatusInquiry" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Cheque Status Inquiry</a>
+        <a href="#/changePassword" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Change Password</a>
+			
+		  </div>
+        </ion-content>
+      </ion-view>
+    </script>
+	
+	     <script id="welcome2.html" type="text/ng-template">
+
+      <ion-view title="DashBoard">
+	     <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+            <ion-nav-buttons side="right" >
+                <a title="Sign out" class="button button-outline icon-right ion-log-out signout-btn-custom" ng-click="btnLogOut()">                    
+                </a>
+           
+		    </ion-nav-buttons >
+			
+			
+		   
+		   
+         </ion-nav-bar>
+		 
+	
+	  
+        <ion-content has-header="true" padding="true">
+                <p style=" text-align:center">{{errorMessage}}</p>  
+
+         <div class="list">  
+   
+		
+		<a href="#/accBalance" class="button button-block button-positive " style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">A/c Balance</a>
+		<a href="#/accStatement" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">A/c Statement</a>
+		<a href="#/fundTranster" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Fund Transfer</a>
+		<a href="#/fundTransterRequest" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Standing Ins.</a>
+		<a href="#/talkTimeRecharge" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Talk Time Recharge</a>
+		<a href="#/stopChequeLeaf" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Stop Cheque Leaf</a>
+		<a href="#/chequeStatusInquiry" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Cheque Status Inquiry</a>
+        <a href="#/changePassword" class="button button-block button-positive" style=" width: 80%;margin-left:10%;margin-right:10%;margin-top:10px;">Change Password</a>
+			
+		  </div>
+		  
+		  
+		  
+        </ion-content>
+      </ion-view>
+    </script>
+  </body>
+</html>
